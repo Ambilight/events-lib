@@ -16,7 +16,8 @@ require (['event', 'event-emitter', 'signal'], function (event, eventEmitter, si
   var listener = console.log.bind (console, 'listener'); // es5 hint
   e.addListener    (listener);
   e.dispatch       (1,2,3); // -> "listener" 1 2 3
-  e.dispatchArray  (4,5,6); // -> "listener" 1 2 3
+  // passing arguments around
+  e.dispatchArray  ([4,5,6]); // -> "listener" 4 5 6
   e.removeListener (listener);
 
 
@@ -24,7 +25,7 @@ require (['event', 'event-emitter', 'signal'], function (event, eventEmitter, si
   // Event emitter more like pubsub
   ee.addEventListener   ('event', console.log.bind (console, 'listener 2'));
   ee.dispatchEvent      ('event', 7, 8);  // -> "listener 2" 7 8
-  ee.dispatchEventArray ('event', 9, 10); // -> "listener 2" 9 10
+  ee.dispatchEventArray ('event', [9, 10]); // -> "listener 2" 9 10
 
 
   var s = new signal ();
@@ -66,6 +67,7 @@ i'm to lazy to do benchmark test, but web inspector's profiler told me, that is 
 license
 -------
 tiny amd events library for common use
+
 Copyright (C) 2013  apsmav@gmail.com
 
 This program is free software: you can redistribute it and/or modify
@@ -79,4 +81,5 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+along with this program.
+If not, see <http://www.gnu.org/licenses/>.
