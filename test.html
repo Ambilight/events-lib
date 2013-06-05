@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="require.js"></script>
+	</head>
+	<body>
+		
+		<script>
+			require (['event', 'event-emitter', 'signal'], function (Event, EventEmitter, Signal) {
+				// Event test
+				var e = new Event;
+				var listener = function () {
+					
+				};
+				e.addListener (listener);
+				e.addListener (function () {
+					
+				});
+				e.removeListener (listener);
+				e.dispatch ('dispatch', 1, 2);
+				e.dispatchArray (['dispatchArray', 3, 4]);
+
+				// EventEmitter test
+				var ee = new EventEmitter;
+				ee.addEventListener ('event 1', function () {
+					
+				});
+				ee.dispatchEvent ('event 1', 5, 6)
+
+				// Signal test
+				s = new Signal;
+				s.addListener (function () {
+					
+				});
+				s.dispatch (7, 8);
+				s.addListener (function () {
+					
+				});
+				s.dispatch (8, 9);
+			});
+		</script>
+	</body>
+</html>
